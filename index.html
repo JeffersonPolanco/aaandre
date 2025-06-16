@@ -1,1 +1,566 @@
-<h1>GitHube pages test</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaandre | Golosinas</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rosa-claro: #ffdde1;
+      --amarillo-claro: #f6f0c4;
+      --rosa-pastel: #ffb6c1;
+      --rosa-fuerte: #f78ca0;
+      --verde-whatsapp: #25D366;
+      --verde-whatsapp-hover: #128C7E;
+    }
+    
+    body {
+      font-family: 'Fredoka One', cursive;
+      background: linear-gradient(135deg, var(--rosa-claro), var(--amarillo-claro));
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      padding-top: 70px;
+      color: #5a3e36;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #navbar {
+      background: linear-gradient(to right, rgba(255,192,203,0.8), rgba(255,182,193,0.7));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    #hero {
+      background: linear-gradient(to right, var(--rosa-fuerte), #fbc7d4));
+      padding: 5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    #hero h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #hero p {
+      font-size: 1.5rem;
+    }
+
+    .accordion-button {
+      font-size: 1.5rem;
+      background-color: #fff0f5;
+      border: none;
+      color: #5a3e36;
+      padding: 1.5rem;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: var(--rosa-pastel);
+      color: white;
+      box-shadow: none;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: transparent;
+    }
+
+    .accordion-body {
+      padding: 2rem;
+    }
+
+    .product-card {
+      transition: all 0.3s ease-in-out;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .product-card .card-body {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .product-card img {
+      transition: all 0.4s ease-in-out;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .product-card:hover img {
+      transform: scale(1.1);
+      border-radius: 50%;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+      font-size: 1.2rem;
+      color: var(--rosa-fuerte);
+      font-weight: bold;
+    }
+
+    #nosotros {
+      background-color: #fffaf0;
+      padding: 4rem 0;
+      margin: 3rem 0;
+      border-radius: 20px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    #nosotros h2 {
+      color: var(--rosa-fuerte);
+      margin-bottom: 2rem;
+    }
+
+    #nosotros p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #whatsapp-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--verde-whatsapp);
+      color: white;
+      font-size: 2rem;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: all 0.3s;
+    }
+
+    #whatsapp-button:hover {
+      background: var(--verde-whatsapp-hover);
+      transform: scale(1.1);
+    }
+
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(45deg, #ffd1dc, #ffe4e1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000;
+      transition: opacity 0.5s ease-out;
+    }
+
+    #loader .spinner {
+      border: 8px solid #ffe4e1;
+      border-top: 8px solid #ff80ab;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1s linear infinite;
+    }
+
+    #loader p {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      color: #ff80ab;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    #footer {
+      background: linear-gradient(to right, #5a3e36, #8b5a2b);
+      padding: 2rem 0;
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    #footer p {
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      #hero p {
+        font-size: 1.2rem;
+      }
+      
+      .accordion-button {
+        font-size: 1.3rem;
+        padding: 1rem;
+      }
+      
+      .product-card img {
+        height: 150px;
+      }
+      
+      #whatsapp-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Cargando dulzura...</p>
+  </div>
+
+  <!-- Encabezado -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-white" href="#">
+        <i class="fas fa-candy-cane me-2"></i>Aaandre
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#categorias-container">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#nosotros">Nosotros</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="hero" class="text-center text-white">
+    <div class="container">
+      <h1 class="display-4 mb-4">Dulzura en cada mordida</h1>
+      <p class="lead mb-0">Descubre nuestras golosinas irresistibles</p>
+      <div class="mt-4">
+        <i class="fas fa-arrow-down fa-2x animate-bounce"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Categorías -->
+  <main id="categorias-container" class="container my-5">
+    <h2 class="text-center mb-5">Nuestros Productos</h2>
+    <div class="accordion" id="categorias">
+      <!-- Chocolates -->
+      <div class="accordion-item mb-3" id="categoria-chocolates">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chocolates">
+            🍫 Chocolates
+          </button>
+        </h2>
+        <div id="chocolates" class="accordion-collapse collapse" data-bs-parent="#categorias">
+          <div class="accordion-body">
+            <div class="row g-4">
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://campograndeperu.com/wp-content/uploads/2023/10/venta-por-mayor-y-menor-de-almendra-con-chocolate.jpg" class="card-img-top" alt="Chocolate con almendras">
+                  <div class="card-body">
+                    <h5 class="card-title">Choco Almendra</h5>
+                    <p class="card-text">S/ 4.50</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://kuyay.pe/wp-content/uploads/2020/12/DSC_1466-scaled.jpg" class="card-img-top" alt="Chocolate negro">
+                  <div class="card-body">
+                    <h5 class="card-title">Chocolate Negro 70%</h5>
+                    <p class="card-text">S/ 5.20</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://chocolatestorras.com/wp-content/uploads/2021/04/Hacer-tableta-de-chocolate-con-leche-en-casa.jpg" class="card-img-top" alt="Chocolate con leche">
+                  <div class="card-body">
+                    <h5 class="card-title">Chocolate con Leche</h5>
+                    <p class="card-text">S/ 4.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://chocolatestorras.com/wp-content/uploads/2023/05/chocolate-blanco-ingredientes.jpg" class="card-img-top" alt="Chocolate blanco">
+                  <div class="card-body">
+                    <h5 class="card-title">Chocolate Blanco</h5>
+                    <p class="card-text">S/ 4.80</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Chocolate con avellanas">
+                  <div class="card-body">
+                    <h5 class="card-title">Choco Avellana</h5>
+                    <p class="card-text">S/ 5.50</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://osojimix.com/wp-content/uploads/2021/04/TRUFAS-DE-CHOCOLATE-Y-AVELLANAS-1.jpg" class="card-img-top" alt="Chocolate relleno">
+                  <div class="card-body">
+                    <h5 class="card-title">Chocolate Relleno</h5>
+                    <p class="card-text">S/ 6.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Chupetines -->
+      <div class="accordion-item mb-3" id="categoria-chupetines">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chupetines">
+            🍭 Chupetines
+          </button>
+        </h2>
+        <div id="chupetines" class="accordion-collapse collapse" data-bs-parent="#categorias">
+          <div class="accordion-body">
+            <div class="row g-4">
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNeyyvut1AEsBr41fnAAzq1oVE2Hn5uFf6Qg&s" class="card-img-top" alt="Chupetines frutales">
+                  <div class="card-body">
+                    <h5 class="card-title">Chupetines Frutales</h5>
+                    <p class="card-text">S/ 1.20 c/u</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQflzFY5Op3Vnt8Ly8o6nJguGFd0Tf_jZDPug&s" class="card-img-top" alt="Chupetines ácidos">
+                  <div class="card-body">
+                    <h5 class="card-title">Chupetines Ácidos</h5>
+                    <p class="card-text">S/ 1.50 c/u</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB4BYUtOZlQuSApHyEYRYUUR33Dpm5uvEEhg&s" class="card-img-top" alt="Chupetines gigantes">
+                  <div class="card-body">
+                    <h5 class="card-title">Chupetines Gigantes</h5>
+                    <p class="card-text">S/ 12.00 c/u</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://i.ytimg.com/vi/B94pKCmgPh0/sddefault.jpg" class="card-img-top" alt="Chupetines de chocolate">
+                  <div class="card-body">
+                    <h5 class="card-title">Choco Chupetines</h5>
+                    <p class="card-text">S/ 2.50 c/u</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://kazemfasgolosina.com/wp-content/uploads/2024/08/DULCES.jpeg" class="card-img-top" alt="Chupetines surtidos">
+                  <div class="card-body">
+                    <h5 class="card-title">Mix Chupetines</h5>
+                    <p class="card-text">S/ 10.00 paq.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://imgproxy.acelerala.com/BXmPxpERkPu4_C-EGbGsUBPYZTQhIP4tusfsH0L68KI/rs:fill:750::1/q:0/aHR0cHM6Ly9hY2VsZXJhbGFzdGF0aWMubnljMy5jZG4uZGlnaXRhbG9jZWFuc3BhY2VzLmNvbS9maWxlcy91cGxvYWRzLzI5MjEvMTU3NTc0Nzk2Ni0xOS01LWpwZy5qcGc.jpg" class="card-img-top" alt="Chupetines especiales">
+                  <div class="card-body">
+                    <h5 class="card-title">Chupetines Especiales</h5>
+                    <p class="card-text">S/ 2.00 c/u</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Galletas -->
+      <div class="accordion-item mb-3" id="categoria-galletas">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#galletas">
+            🍪 Galletas
+          </button>
+        </h2>
+        <div id="galletas" class="accordion-collapse collapse" data-bs-parent="#categorias">
+          <div class="accordion-body">
+            <div class="row g-4">
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://s1.elespanol.com/2023/04/09/cocinillas/recetas/postres/754934523_232288662_1706x960.jpg" class="card-img-top" alt="Galletas de chocolate">
+                  <div class="card-body">
+                    <h5 class="card-title">Galletas de Chocolate</h5>
+                    <p class="card-text">S/ 8.00 paq.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4rZZqJb1yTazJlzUJ7pr6txQztfXMc9NrEHQem9kjmnUKXYquuUxwfJOK3XqFw8fd7ZJhGtFK3dLt1Y-9tJHyzrxW-tC24TdtS6FKF4CihyphenhyphenUzivwR7XAebd__p-98iCi3JvYtQZTaUcHv/s1600-rw/galletas-avena-facil.JPG" class="card-img-top" alt="Galletas de avena">
+                  <div class="card-body">
+                    <h5 class="card-title">Galletas de Avena</h5>
+                    <p class="card-text">S/ 7.50 paq.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://es.cravingsjournal.com/wp-content/uploads/2021/11/galletas-rellenas-9-500x375.jpg" class="card-img-top" alt="Galletas rellenas">
+                  <div class="card-body">
+                    <h5 class="card-title">Galletas Rellenas</h5>
+                    <p class="card-text">S/ 9.00 paq.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://www.campi.com.co/wp-content/uploads/2023/01/Galletas-integrales-campi.jpg" class="card-img-top" alt="Galletas integrales">
+                  <div class="card-body">
+                    <h5 class="card-title">Galletas Integrales</h5>
+                    <p class="card-text">S/ 8.50 paq.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://www.pequerecetas.com/wp-content/uploads/2021/01/galletas-para-san-valentin.jpg" class="card-img-top" alt="Galletas decoradas">
+                  <div class="card-body">
+                    <h5 class="card-title">Galletas Decoradas</h5>
+                    <p class="card-text">S/ 12.00 paq.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                <div class="card product-card h-100">
+                  <img src="https://media-cdn.tripadvisor.com/media/photo-s/1c/4a/14/e6/mix-de-galletas-de-mantequilla.jpg" class="card-img-top" alt="Galletas surtidas">
+                  <div class="card-body">
+                    <h5 class="card-title">Mix de Galletas</h5>
+                    <p class="card-text">S/ 15.00 caja</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="nosotros" class="text-center">
+    <div class="container">
+      <h2 class="mb-4">Sobre Aaandre <i class="fas fa-heart"></i></h2>
+      <p class="lead">Aaandre nació en provincia como un sueño familiar lleno de dulzura. Cada producto es una experiencia pensada para compartir momentos felices. ¡Gracias por apoyarnos en este dulce camino!</p>
+      <div class="mt-4">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Familia Aaandre" class="img-fluid rounded-circle" style="max-width: 200px; border: 5px solid var(--rosa-pastel);">
+      </div>
+    </div>
+  </section>
+
+  <a id="whatsapp-button"
+     href="https://wa.me/51900691687?text=He%20visto%20su%20p%C3%A1gina%20y%20estoy%20interesado%20en%20hacer%20una%20orden%20de..."
+     target="_blank"
+     title="Contáctanos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer id="footer" class="text-center py-4">
+    <div class="container">
+      <p class="mb-2">&copy; 2025 Aaandre - Todos los derechos reservados</p>
+      <p class="mb-0">Dulzura hecha en Perú <i class="fas fa-flag"></i></p>
+      <div class="mt-3">
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    window.addEventListener("load", function() {
+      setTimeout(function() {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = "0";
+        setTimeout(function() {
+          loader.style.display = "none";
+        }, 500);
+      }, 1500);
+    });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    document.querySelectorAll('.accordion-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const icon = this.querySelector('span');
+        if (icon) {
+          icon.classList.toggle('fa-plus');
+          icon.classList.toggle('fa-minus');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
